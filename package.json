@@ -1,0 +1,23 @@
+{
+  "name": "unraid-tower-control-api",
+  "version": "1.0.0",
+  "description": "Control API for unraid tower on home network",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vigas147/unraid-tower-control-api.git"
+  },
+  "author": "Marek Vigaš",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vigas147/unraid-tower-control-api/issues"
+  },
+  "homepage": "https://github.com/vigas147/unraid-tower-control-api#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-basic-auth": "^1.1.6"
+  }
+}
