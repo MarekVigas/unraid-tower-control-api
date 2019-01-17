@@ -22,9 +22,15 @@ app.get('/auth', staticAuth, (req, res) => {
 })
 
 app.get('/boot', staticAuth, (req, res) => {
-    const ls = spawnSync('ssh', ["root@vpn.marek-vigas.sk", "./python.py"])
-    // res.send(ls.stdout.toString())
-    res.sendStatus(200)
+    const ls = spawnSync('ssh', ["ssh pi@127.0.0.1 -p 6666", "./wake.sh"])
+    let respone = ls.stdout.toString()
+    res.send(respone)
+})
+
+app.get('/getIp', staticAuth, (req, res) => {
+    const ls = spawnSync('ssh', ["ssh pi@127.0.0.1 -p 6666", "./tower-ip.sh"])
+    let respone = ls.stdout.toString()
+    res.send(respone)
 })
 
 app.listen(port, () => console.log(`Listening on port ${port}`))
