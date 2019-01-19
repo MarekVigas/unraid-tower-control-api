@@ -34,7 +34,7 @@ app.get('/getIp', staticAuth, (req, res) => {
 })
 
 app.get('/ping', staticAuth, (req, res) => {
-    res.send("I'm up!")
+    res.sendStatus(200)
 })
 
 app.listen(port, () => console.log(`Listening on port ${port}`))
