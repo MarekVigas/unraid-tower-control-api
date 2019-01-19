@@ -33,7 +33,7 @@ app.get('/getIp', staticAuth, (req, res) => {
     res.send(respone)
 })
 
-app.get('/ping', staticAuth, (req, res) => {
+app.get('/ping', (req, res) => {
     res.sendStatus(200)
 })
 
