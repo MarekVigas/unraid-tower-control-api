@@ -22,13 +22,13 @@ app.get('/auth', staticAuth, (req, res) => {
 })
 
 app.get('/boot', staticAuth, (req, res) => {
-    const ls = spawnSync('ssh', ["ssh pi@127.0.0.1 -p 6666", "./wake.sh"])
+    const ls = spawnSync("./wake.sh")
     let respone = ls.stdout.toString()
     res.send(respone)
 })
 
 app.get('/getIp', staticAuth, (req, res) => {
-    const ls = spawnSync('ssh', ["ssh pi@127.0.0.1 -p 6666", "./tower-ip.sh"])
+    const ls = spawnSync("./tower-ip.sh")
     let respone = ls.stdout.toString()
     res.send(respone)
 })
