@@ -17,7 +17,7 @@ function check() {
         spawnSSH();
     }
 
-    console.log(Date(Date.now()), respone);
+    console.log(Date(Date.now()), count);
     setTimeout(check, 1000*10);
 }
 
