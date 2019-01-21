@@ -1,6 +1,7 @@
 const { spawnSync } = require('child_process')
 
 function spawnSSH() {
+    console.log(Date(Date.now()));
     spawnSync("./bg-tunnel.sh");
 }
 
