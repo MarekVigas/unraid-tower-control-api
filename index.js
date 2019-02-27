@@ -29,8 +29,11 @@ app.get('/boot', staticAuth, (req, res) => {
 
 app.get('/getIp', staticAuth, (req, res) => {
     const ls = spawnSync("./tower-ip.sh")
-    let respone = ls.stdout.toString()
-    res.send(respone)
+    if (ls.stdout) {
+        res.send(ls.stdout.toString())
+    } else {
+        res.send("Server offline.")
+    }
 })
 
 app.get('/ping', (req, res) => {
