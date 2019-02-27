@@ -14,7 +14,7 @@ function check() {
         spawnSSH();
     }
 
-    if (count <= 3) {
+    if (count < 2) {
         spawnSSH();
     }
 
