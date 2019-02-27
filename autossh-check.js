@@ -18,7 +18,7 @@ function check() {
         spawnSSH();
     }
 
-    setTimeout(check, 1000*60*10);
+    setTimeout(check, 1000*60*3);
 }
 
 check()
