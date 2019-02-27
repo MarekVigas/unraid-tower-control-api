@@ -1,2 +1,2 @@
 #!/bin/bash
-ps aux | grep autossh | wc -l
+netstat -lpnt | grep autossh | wc -l
