@@ -1,39 +1,38 @@
 const express = require('express')
-const basicAuth = require('express-basic-auth')
 const app = express()
-const port = 3000
-const users = require('./users')
+const port = 4000
 const { spawnSync } = require('child_process')
+const fetch = require("node-fetch")
 
-const staticAuth = basicAuth({
-    users: users,
-    challenge: true,
-    unauthorizedResponse: getUnauthorizedResponse
-})
-
-function getUnauthorizedResponse(req) {
-    return req.auth
-        ? ('Credentials ' + req.auth.user + ':' + req.auth.password + ' rejected')
-        : 'No credentials provided'
-}
-
-app.get('/auth', staticAuth, (req, res) => {
-    res.sendStatus(200)
-})
-
-app.get('/boot', staticAuth, (req, res) => {
+app.get('/boot', (req, res) => {
     const ls = spawnSync("./wake.sh")
     let respone = ls.stdout.toString()
     res.send(respone)
 })
 
-app.get('/getIp', staticAuth, (req, res) => {
+app.get('/getIp', (req, res) => {
     const ls = spawnSync("./tower-ip.sh")
     if (ls.stdout && ls.stdout.length > 4) {
         res.send(ls.stdout.toString())
     } else {
         res.send("Server offline.")
     }
+})
+
+app.get('/status', (req, res) => {
+    fetch("http://192.168.88.249/")
+        .then(result => {
+            if (result.ok) {
+                res.send({
+                    status: "online"
+                })
+            }
+        })
+        .catch(err => {
+            res.send({
+                status: "offline"
+            })
+        })
 })
 
 app.get('/ping', (req, res) => {
