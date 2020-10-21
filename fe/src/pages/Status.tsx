@@ -10,16 +10,16 @@ const Status: React.FC = () => {
     const [toastColor, setToastColor] = React.useState("primary");
 
     React.useEffect(() => {
-        axios.get(`http://${window.location.hostname}:4000/status`)
+        axios.get(`http://${window.location.hostname}/api/status`)
         .then(result => setStatus(result.data.status))
         .catch(err => console.error(err))
-        // axios.get(`http://${window.location.hostname}:4000/getIp`)
+        // axios.get(`http://${window.location.hostname}/api/getIp`)
         // .then(result => setIp(result.data))
         // .catch(err => console.error(err))
     }, []);
 
     const startServer = () => {
-        axios.get(`http://${window.location.hostname}:4000/boot`)
+        axios.get(`http://${window.location.hostname}/api/boot`)
         .then(res => {
             setToastMessage(res.data)
             setToastColor("success")
