@@ -18,6 +18,6 @@
   "homepage": "https://github.com/vigas147/unraid-tower-control-api#readme",
   "dependencies": {
     "express": "^4.16.4",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^3.2.10"
   }
 }
